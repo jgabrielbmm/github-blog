@@ -6,6 +6,9 @@ export const HomeContainer = styled.main`
   max-width: 1180px;
   padding: 0 2rem;
   margin: 0 auto;
+  a {
+    text-decoration: none;
+  }
 `
 
 export const SearchContainer = styled.div`
@@ -69,36 +72,32 @@ export const PostSession = styled.section`
 
 `
 
-export const PostSummary = styled.a`
+export const PostSummary = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
   gap: 1.25rem;
   padding: 2rem;
-  /* height: 16.25rem; */
+  height: 16.25rem;
   background: ${props => props.theme["bgray-700"]};
   border: 2px solid transparent;
   border-radius: 10px;
-  cursor: pointer;
 
-  &:hover{
-    border: 2px solid ${props => props.theme["bgray-600"]};;
+  a {
+    width: 100%;
   }
 
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: ${props => props.theme["bgray-300"]};
-  }
 `
 
 export const PostSummaryHeader = styled.div`
   display: flex;
   align-items:  flex-start;
   justify-content: space-between;
-  gap: 1rem;
   width: 100%;
   border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
 
   h3{
     font-weight: 700;
@@ -113,4 +112,16 @@ export const PostSummaryHeader = styled.div`
     color: ${props => props.theme["bgray-400"]};
   }
 
+  /* &:hover{
+    border: 2px solid ${props => props.theme["bgray-600"]};;
+  } */
+
+`
+export const MarkdownContainer = styled.div`
+  font-size: 1rem;
+  line-height: 1.6;
+  color: ${props => props.theme["bgray-300"]};
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow:clip;
 `

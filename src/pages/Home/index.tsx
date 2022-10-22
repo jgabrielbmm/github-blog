@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { GithubDataContext } from "../../contexts/GithubDataContext";
 import { CreatorInfo } from "./components/CreatorInfo";
+import { Link } from 'react-router-dom'
+import ReactMardown from 'react-markdown'
 import {
   HomeContainer,
   InputBase,
+  MarkdownContainer,
   PostSession,
   PostSummary,
   PostSummaryHeader,
@@ -10,6 +15,7 @@ import {
 } from "./styles";
 
 export function Home() {
+  const { issuesData } = useContext(GithubDataContext)
   return (
     <HomeContainer>
       <CreatorInfo />
@@ -22,50 +28,25 @@ export function Home() {
         <InputBase type="text" placeholder="Buscar conteúdo" />
       </SearchContainer>
       <PostSession>
-        <PostSummary>
-          <PostSummaryHeader>
-            <h3>JavaScript data types and data structures</h3>
-            <span>Há 1 dia</span>
-          </PostSummaryHeader>
-          <p>
-            Programming languages all have built-in data structures,
-            but these often differ from one language to another. This article
-            attempts to list the built-in data structures available...
-          </p>
-        </PostSummary>
-        <PostSummary>
-          <PostSummaryHeader>
-            <h3>JavaScript data types and data structures</h3>
-            <span>Há 1 dia</span>
-          </PostSummaryHeader>
-          <p>
-            Programming languages all have built-in data structures,
-            but these often differ from one language to another. This article
-            attempts to list the built-in data structures available...
-          </p>
-        </PostSummary>
-        <PostSummary>
-          <PostSummaryHeader>
-            <h3>JavaScript data types and data structures</h3>
-            <span>Há 1 dia</span>
-          </PostSummaryHeader>
-          <p>
-            Programming languages all have built-in data structures,
-            but these often differ from one language to another. This article
-            attempts to list the built-in data structures available...
-          </p>
-        </PostSummary>
-        <PostSummary>
-          <PostSummaryHeader>
-            <h3>JavaScript data types and data structures</h3>
-            <span>Há 1 dia</span>
-          </PostSummaryHeader>
-          <p>
-            Programming languages all have built-in data structures,
-            but these often differ from one language to another. This article
-            attempts to list the built-in data structures available...
-          </p>
-        </PostSummary>
+        {issuesData.length > 0 && (
+          issuesData.map(issue => {
+            return (
+              <PostSummary key={issue.number} >
+                <Link to={`/post/${issue.number}`}  >
+                  <PostSummaryHeader>
+                    <h3>{issue.title}</h3>
+                    <span>{issue.createdAt.toDateString()}</span>
+                  </PostSummaryHeader>
+                </Link>
+                <MarkdownContainer>
+                  <ReactMardown className="markdownHome" >{issue.body}</ReactMardown>
+                </MarkdownContainer>
+              </PostSummary>
+            )
+          })
+        )}
+
+
       </PostSession >
 
     </HomeContainer >

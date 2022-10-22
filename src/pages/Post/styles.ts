@@ -78,4 +78,8 @@ export const FooterContainer = styled.footer`
 
 export const IssuesContent = styled.article`
   padding: 2.5rem 2rem;
+
+  .markdown {
+    white-space: pre-wrap;
+  }
 `
