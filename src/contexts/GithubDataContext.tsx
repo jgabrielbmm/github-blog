@@ -86,23 +86,41 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
     setUserData(user)
   }
 
+
   async function fetchIssuesData(query?: string) {
-    const url = 'https://api.github.com/repos/jgabrielbmm/github-blog/issues'
-    const response = await axios(url)
+    if (!query) {
+      const url = 'https://api.github.com/repos/jgabrielbmm/github-blog/issues'
+      const response = await axios(url)
 
-    const issues: IssuesDataType[] = response.data.map((issue: any) => {
-      return {
-        number: issue.number,
-        login: issue.user.login,
-        createdAt: new Date(issue.created_at),
-        comments: issue.comments,
-        title: issue.title,
-        body: issue.body,
-        url: issue.url
-      }
-    })
-    setIssuesData(issues)
+      const issues: IssuesDataType[] = response.data.map((issue: any) => {
+        return {
+          number: issue.number,
+          login: issue.user.login,
+          createdAt: new Date(issue.created_at),
+          comments: issue.comments,
+          title: issue.title,
+          body: issue.body,
+          url: issue.url
+        }
+      })
+      setIssuesData(issues)
+    } else {
+      const url = `https://api.github.com/search/issues?q=${query}%20repo:jgabrielbmm/github-blog`
+      const response = await axios(url)
 
+      const issues: IssuesDataType[] = response.data.items.map((issue: any) => {
+        return {
+          number: issue.number,
+          login: issue.user.login,
+          createdAt: new Date(issue.created_at),
+          comments: issue.comments,
+          title: issue.title,
+          body: issue.body,
+          url: issue.url
+        }
+      })
+      setIssuesData(issues)
+    }
   }
 
   async function fetchIssue(number: string) {
@@ -123,7 +141,6 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
 
   useEffect(() => {
     fetchUserData()
-    // fetchIssuesData()
   }, [])
 
 
