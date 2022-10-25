@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GithubDataContext } from "../../contexts/GithubDataContext";
 import { CreatorInfo } from "./components/CreatorInfo";
 import { Link } from 'react-router-dom'
@@ -15,7 +15,11 @@ import {
 } from "./styles";
 
 export function Home() {
-  const { issuesData } = useContext(GithubDataContext)
+  const { issuesData, fetchIssuesData } = useContext(GithubDataContext)
+
+  useEffect(() => {
+    fetchIssuesData()
+  }, [])
   return (
     <HomeContainer>
       <CreatorInfo />

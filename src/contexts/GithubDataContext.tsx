@@ -25,6 +25,7 @@ interface GithubDataContextType {
   issuesData: IssuesDataType[]
   fetchIssue: (number: string) => void
   issue: IssuesDataType
+  fetchIssuesData: (query?: string) => void
 }
 
 interface GithubDataContextProviderProps {
@@ -85,7 +86,7 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
     setUserData(user)
   }
 
-  async function fetchIssuesData() {
+  async function fetchIssuesData(query?: string) {
     const url = 'https://api.github.com/repos/jgabrielbmm/github-blog/issues'
     const response = await axios(url)
 
@@ -122,13 +123,13 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
 
   useEffect(() => {
     fetchUserData()
-    fetchIssuesData()
+    // fetchIssuesData()
   }, [])
 
 
 
   return (
-    <GithubDataContext.Provider value={{ userData, issuesData, fetchIssue, issue }}>
+    <GithubDataContext.Provider value={{ userData, issuesData, fetchIssue, issue, fetchIssuesData }}>
       {children}
     </GithubDataContext.Provider>
   )
