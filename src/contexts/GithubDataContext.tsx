@@ -93,6 +93,7 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
       const response = await axios(url)
 
       const issues: IssuesDataType[] = response.data.map((issue: any) => {
+
         let body = issue.body
         if (body.length > 250) {
           body = body.substring(0, 250) + "..."
@@ -112,7 +113,13 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
       const url = `https://api.github.com/search/issues?q=${query}%20repo:jgabrielbmm/github-blog`
       const response = await axios(url)
 
+
       const issues: IssuesDataType[] = response.data.items.map((issue: any) => {
+        let body = issue.body
+        if (body.length > 250) {
+          body = body.substring(0, 250) + "..."
+        }
+
         return {
           number: issue.number,
           login: issue.user.login,
