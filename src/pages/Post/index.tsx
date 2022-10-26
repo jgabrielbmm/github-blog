@@ -18,8 +18,7 @@ export function Post() {
     }
   }, [number])
 
-  const githubLink = 'https://github.com/jgabrielbmm'
-
+  console.log(issue)
 
   return (
     <PostContainer>
@@ -29,7 +28,7 @@ export function Post() {
             <FontAwesomeIcon icon={faChevronLeft} />
             <span>voltar</span>
           </Link>
-          <a href={githubLink}>
+          <a href={issue.url} target="_blank">
             <span>Ver no github</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           </a>

@@ -84,8 +84,8 @@ export const PostSummary = styled.div`
   border: 2px solid transparent;
   border-radius: 10px;
 
-  a {
-    width: 100%;
+  &:hover{
+    border: 2px solid ${props => props.theme["bgray-500"]};
   }
 
 `

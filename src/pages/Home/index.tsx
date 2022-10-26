@@ -48,22 +48,20 @@ export function Home() {
         {issuesData.length > 0 && (
           issuesData.map(issue => {
             return (
-              <PostSummary key={issue.number} >
-                <Link to={`/post/${issue.number}`}  >
+              <Link to={`/post/${issue.number}`}  >
+                <PostSummary key={issue.number} >
                   <PostSummaryHeader>
                     <h3>{issue.title}</h3>
                     <span>{issue.createdAt.toDateString()}</span>
                   </PostSummaryHeader>
-                </Link>
-                <MarkdownContainer>
-                  <ReactMardown className="markdownHome" >{issue.body}</ReactMardown>
-                </MarkdownContainer>
-              </PostSummary>
+                  <MarkdownContainer>
+                    <ReactMardown className="markdownHome" >{issue.body}</ReactMardown>
+                  </MarkdownContainer>
+                </PostSummary>
+              </Link>
             )
           })
         )}
-
-
       </PostSession >
 
     </HomeContainer >

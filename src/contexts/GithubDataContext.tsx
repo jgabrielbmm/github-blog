@@ -108,7 +108,7 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
           comments: issue.comments,
           title: issue.title,
           body: body,
-          url: issue.url
+          url: issue.url,
         }
       })
       setIssuesData(issues)
@@ -132,7 +132,7 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
           comments: issue.comments,
           title: issue.title,
           body: body,
-          url: issue.url
+          url: issue.url,
         }
       })
       setIssuesData(issues)
@@ -149,7 +149,7 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
       comments: response.data.comments,
       title: response.data.title,
       body: response.data.body,
-      url: response.data.url
+      url: response.data.html_url,
     }
     setIssue(newIssue)
   }
