@@ -98,8 +98,8 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
         const re = /(?<marks>[`]|\*{1,3}|_{1,3}|~{2})(?<inmarks>.*?)\1|\[(?<link_text>.*)\]\(.*\)/g
         body = body.replace(re, '$<inmarks>$<link_text>')
 
-        if (body.length > 160) {
-          body = body.substring(0, 160) + "..."
+        if (body.length > 200) {
+          body = body.substring(0, 200) + "..."
         }
         return {
           number: issue.number,
@@ -121,8 +121,8 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
         const re = /(?<marks>[`]|\*{1,3}|_{1,3}|~{2})(?<inmarks>.*?)\1|\[(?<link_text>.*)\]\(.*\)/g
         body = body.replace(re, '$<inmarks>$<link_text>')
 
-        if (body.length > 250) {
-          body = body.substring(0, 250) + "..."
+        if (body.length > 200) {
+          body = body.substring(0, 200) + "..."
         }
 
         return {

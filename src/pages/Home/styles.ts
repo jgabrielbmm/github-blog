@@ -79,7 +79,6 @@ export const PostSummary = styled.div`
   width: 100%;
   gap: 1.25rem;
   padding: 2rem;
-  height: 16.25rem;
   background: ${props => props.theme["bgray-700"]};
   border: 2px solid transparent;
   border-radius: 10px;
@@ -112,21 +111,13 @@ export const PostSummaryHeader = styled.div`
     color: ${props => props.theme["bgray-400"]};
   }
 
-  /* &:hover{
-    border: 2px solid ${props => props.theme["bgray-600"]};;
-  } */
-
 `
 export const MarkdownContainer = styled.div`
   font-size: 1rem;
   line-height: 1.6;
   color: ${props => props.theme["bgray-300"]};
-  overflow: hidden;
-  /* white-space: nowrap; */
-  text-overflow:clip;
 
   .markdownHome {
-    white-space: pre-wrap;
     line-height: 1.6;
     hyphens: "auto";
   }
