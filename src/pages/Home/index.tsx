@@ -3,6 +3,7 @@ import { GithubDataContext } from "../../contexts/GithubDataContext";
 import { CreatorInfo } from "./components/CreatorInfo";
 import { Link } from 'react-router-dom'
 import ReactMardown from 'react-markdown'
+
 import {
   HomeContainer,
   InputBase,
@@ -30,6 +31,7 @@ export function Home() {
       fetchIssuesData()
     }
   }, [query])
+
 
   return (
     <HomeContainer>

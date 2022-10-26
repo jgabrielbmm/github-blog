@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { GithubDataContext } from "../../contexts/GithubDataContext";
 import ReactMardown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 export function Post() {
   const { fetchIssue, issue } = useContext(GithubDataContext)
@@ -50,7 +51,7 @@ export function Post() {
         </FooterContainer>
       </PostInfo>
       <IssuesContent>
-        <ReactMardown className="markdown">{issue.body}</ReactMardown>
+        <ReactMardown className="markdown" remarkPlugins={[[remarkGfm, { singleTilde: true }]]}>{issue.body}</ReactMardown>
       </IssuesContent>
 
     </PostContainer>

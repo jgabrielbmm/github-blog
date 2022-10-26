@@ -81,5 +81,15 @@ export const IssuesContent = styled.article`
 
   .markdown {
     white-space: pre-wrap;
+    line-height: 1.6;
+    hyphens: "auto";
+  }
+
+  .markdown a {
+    color: ${props => props.theme["blue-400"]};
+  }
+
+  .markdown li{
+    margin-left: 2rem;
   }
 `

@@ -124,4 +124,18 @@ export const MarkdownContainer = styled.div`
   overflow: hidden;
   /* white-space: nowrap; */
   text-overflow:clip;
+
+  .markdownHome {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    hyphens: "auto";
+  }
+
+  .markdownHome a {
+    color: ${props => props.theme["blue-400"]};
+  }
+
+  .markdownHome li{
+    margin-left: 2rem;
+  }
 `

@@ -93,13 +93,17 @@ export function GithubDataContextProvider({ children }: GithubDataContextProvide
       const response = await axios(url)
 
       const issues: IssuesDataType[] = response.data.map((issue: any) => {
+        let body = issue.body
+        if (body.length > 250) {
+          body = body.substring(0, 250) + "..."
+        }
         return {
           number: issue.number,
           login: issue.user.login,
           createdAt: new Date(issue.created_at),
           comments: issue.comments,
           title: issue.title,
-          body: issue.body,
+          body: body,
           url: issue.url
         }
       })
