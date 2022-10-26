@@ -7,6 +7,8 @@ import { useContext, useEffect } from "react";
 import { GithubDataContext } from "../../contexts/GithubDataContext";
 import ReactMardown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 export function Post() {
   const { fetchIssue, issue } = useContext(GithubDataContext)
@@ -41,7 +43,7 @@ export function Post() {
           </div>
           <div>
             <FontAwesomeIcon icon={faCalendarDay} />
-            <span>{issue.createdAt.toDateString()}</span>
+            <span>{formatDistanceToNow(issue.createdAt, { locale: ptBR, addSuffix: true })}</span>
           </div>
           <div>
             <FontAwesomeIcon icon={faComment} />

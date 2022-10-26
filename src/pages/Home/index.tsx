@@ -3,6 +3,8 @@ import { GithubDataContext } from "../../contexts/GithubDataContext";
 import { CreatorInfo } from "./components/CreatorInfo";
 import { Link } from 'react-router-dom'
 import ReactMardown from 'react-markdown'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from "date-fns/esm/locale/pt-BR/index.js";
 
 import {
   HomeContainer,
@@ -14,6 +16,7 @@ import {
   PublicationContainer,
   SearchContainer
 } from "./styles";
+
 
 export function Home() {
   const { issuesData, fetchIssuesData } = useContext(GithubDataContext)
@@ -52,7 +55,7 @@ export function Home() {
                 <PostSummary key={issue.number} >
                   <PostSummaryHeader>
                     <h3>{issue.title}</h3>
-                    <span>{issue.createdAt.toDateString()}</span>
+                    <span>{formatDistanceToNow(issue.createdAt, { locale: ptBR, addSuffix: true })}</span>
                   </PostSummaryHeader>
                   <MarkdownContainer>
                     <ReactMardown className="markdownHome" >{issue.body}</ReactMardown>
